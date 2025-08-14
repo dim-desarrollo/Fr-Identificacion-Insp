@@ -50,15 +50,15 @@ agent any
    stages {
 
 
-    stage('Message start deploy dev') {
+    // stage('Message start deploy dev') {
 
-        steps {
+    //     steps {
 
-            discordSend description: "Inicio de deploy en PRODUCCION!!!", footer: "Inicado", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
+    //         discordSend description: "Inicio de deploy en PRODUCCION!!!", footer: "Inicado", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
 
-        }
+    //     }
 
-    }
+    // }
 
 
     stage('Iniciando variables') {
@@ -109,7 +109,7 @@ agent any
      stage('Build and run to Docker') {
 
          environment{
-             PUERTO_INTERNO = 80
+            //  PUERTO_INTERNO = 80
              NOMBRE_CONTENEDOR = "front-inspectores"
          }
 
@@ -148,18 +148,18 @@ agent any
 
      }
 
-    stage('Message finish deploy') {
+    // stage('Message finish deploy') {
 
 
-        steps {
+    //     steps {
 
-            sh "echo ${HORA_DESPLIEGUE}"
+    //         sh "echo ${HORA_DESPLIEGUE}"
 
-            discordSend description: "(DEV) Deploy front-inspectores echo en PRODUCCION!!!", footer: "Hora de inicio de despliegue: ${HORA_DESPLIEGUE} ", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
+    //         discordSend description: "(DEV) Deploy front-inspectores echo en PRODUCCION!!!", footer: "Hora de inicio de despliegue: ${HORA_DESPLIEGUE} ", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
 
-        }
+    //     }
 
-    }
+    // }
 
    }
 
