@@ -96,11 +96,11 @@ agent any
                     }
 
 
-                  DOCKER_VERSION = sh(returnStdout: true, script: 'docker version').trim()
-                  NODE_VERSION = sh(returnStdout: true, script: 'npm -v').trim()
+                //   DOCKER_VERSION = sh(returnStdout: true, script: 'docker version').trim()
+                //   NODE_VERSION = sh(returnStdout: true, script: 'npm -v').trim()
 
-                  echo "Docker version: ${DOCKER_VERSION}"
-                  echo "Node version: ${NODE_VERSION}"
+                //   echo "Docker version: ${DOCKER_VERSION}"
+                //   echo "Node version: ${NODE_VERSION}"
 
               }
           }
