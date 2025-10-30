@@ -5,6 +5,7 @@ import ViewAgentes from "./components/scanner/ViewAgentes"
 import ListInspectors from "./components/list/ListInspectors"
 import InsertImg from "./components/insertImg/InsertImg"
 import CardInspectores from "./components/card2/CardInspectores"
+import { CardNueva } from "./components/cardNueva/card-nueva"
 
 
 
@@ -33,6 +34,7 @@ function App() {
       <Route path='/scaner' element={ <ViewAgentes /> } />
       <Route path='/lista' element={ <ListInspectors /> } />  
       <Route path='/insert/:numeroAfiliado' element={ <InsertImg /> } />
+      <Route path='/card-nueva' element={ <CardNueva  /> } />
     </Routes>
   )
 }
