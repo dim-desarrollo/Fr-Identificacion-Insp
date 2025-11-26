@@ -24,13 +24,13 @@ def RAMA_PARA_CLONAR
 pipeline {
 
 agent any 
-/*
+
    tools {
         // Install the Maven version configured as "M3" and add it to the path.
         // dockerTool 'docker24.0.4'
-        // nodejs 'nodeJs18.18.1'
+        nodejs 'nodeJs18.18.1'
     }
-*/
+
     environment {
 
         HORA_DESPLIEGUE = sh(returnStdout: true, script: "date '+%A %W %Y %X'").trim()
