@@ -6,6 +6,8 @@ import ListInspectors from "./components/list/ListInspectors"
 import InsertImg from "./components/insertImg/InsertImg"
 import CardInspectores from "./components/card2/CardInspectores"
 import ListBd from "./components/nuevabd/ListBd"
+import CredencialAfiliadoCard from "./components/cardNueva/card-nueva-clean"
+import { CardNueva } from "./components/cardNueva/card-nueva"
 
 
 
@@ -31,10 +33,12 @@ function App() {
     <Routes>
       <Route path='/generar' element={ <GenerateQR /> } />
       <Route path='/inspectores/:numeroAfiliado' element={ <CardInspectores /> } />
+      <Route path='/inspectoresPrueba/:hashLagajo' element={ <CardNueva/>  } />
       <Route path='/scaner' element={ <ViewAgentes /> } />
-      <Route path='/lista' element={ <ListInspectors /> } />  
+      {/* <Route path='/lista' element={ <ListInspectors /> } />   */}
       <Route path='/insert/:numeroAfiliado' element={ <InsertImg /> } />
-      <Route path='/nuevabd' element={ <ListBd/> }/>
+      <Route path='/lista' element={ <ListBd/> }/>
+      {/* <Route path='/' element={ <Card } /> */}
     </Routes>
   )
 }

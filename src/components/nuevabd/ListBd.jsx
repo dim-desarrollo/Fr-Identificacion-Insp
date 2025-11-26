@@ -10,6 +10,7 @@ function ListBd() {
     const GenerateCode = async (IDNI) => {
         if (!IDNI) return '';
         try {
+            // const qrDataUrl = `${import.meta.env.VITE_NUEVABD}:3010/inspectores/${IDNI}`;
             const qrDataUrl = `http://dimsmt.gob.ar:3010/inspectores/${IDNI}`;
             return await QRCode.toDataURL(qrDataUrl, {
                 width: 350,
@@ -56,9 +57,9 @@ function ListBd() {
                                 <div className="cont-img">
 
                                     {datos.urlImagen ? (
-                                        <img src={datos.urlImagen} alt="" />
+                                        <p><b>Imagen Cargada &#10004;</b></p>
                                     ) : (
-                                        <p>No tiene Imagen</p>
+                                        <p><b>No tiene Imagen</b></p>
                                     )}
 
                                     {qr[i] && <img src={qr[i]} alt="QR" />}

@@ -22,7 +22,7 @@ export function getAgenteByNum(num) {
   console.log("---- Afiliado ----")
   console.log(num)
 
-  return fetch(`${import.meta.env.VITE_URL_API}/api/inspector?hashLagajo=${num}`, options)
+  return fetch(`${import.meta.env.VITE_NUEVABD}/api/inspector?hashLagajo=${num}`, options)
     .then(response => response.json())
     .then(response => {
       console.log(response)

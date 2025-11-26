@@ -1,0 +1,400 @@
+/* Credencial Afiliado Card - Replica exacta del diseño */
+.credencial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Tamaño CR80: 85.6mm x 54mm escalado 5x para pantalla */
+.credencial-card {
+  width: 428px; /* 85.6mm * 5 */
+  height: 270px; /* 54mm * 5 */
+  background: linear-gradient(135deg, #3b5998 0%, #5b7bc5 50%, #87ceeb 100%);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header con logo DIM */
+.credencial-header {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 45px;
+  background-color: white;
+  border-radius: 25px 25px 0 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.logo-dim {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dim-text {
+  font-size: 28px;
+  font-weight: 900;
+  color: #3b5998;
+  letter-spacing: -1px;
+}
+
+.dim-subtitle {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: #3b5998;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.dim-subtitle span:first-child {
+  margin-bottom: -2px;
+}
+
+/* Sección de fotos */
+.credencial-photos {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 85px;
+  background: linear-gradient(90deg, #4da9df 0%, #87ceeb 100%);
+  border-radius: 0 25px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.photo-placeholder {
+  background-color: #c4c4c4;
+  border-radius: 4px;
+}
+
+.photo-left {
+  width: 65px;
+  height: 65px;
+}
+
+.photo-right {
+  width: 70px;
+  height: 70px;
+}
+
+/* Sección de información */
+.credencial-info {
+  position: absolute;
+  top: 148px;
+  left: 12px;
+  right: 12px;
+  height: 80px;
+  background-color: white;
+  border-radius: 25px 0 25px 0;
+  padding: 12px 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.info-badge {
+  width: 35px;
+  height: 20px;
+  background-color: #3b5998;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.info-fields {
+  flex: 1;
+  font-size: 11px;
+}
+
+.field-row {
+  margin-bottom: 2px;
+  display: flex;
+  gap: 8px;
+}
+
+.field-label {
+  font-weight: bold;
+  color: #000;
+  min-width: 70px;
+}
+
+.field-value {
+  color: #000;
+  font-weight: normal;
+}
+
+.disclaimer {
+  margin-top: 6px;
+  font-size: 9px;
+  line-height: 1.2;
+  color: #000;
+}
+
+.disclaimer strong {
+  font-weight: bold;
+}
+
+.hash-info {
+  margin-top: 4px;
+  font-size: 8px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Footer con logo municipal */
+.credencial-footer {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.ciudad-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.leaf-icon {
+  font-size: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.ciudad-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.ciudad-title {
+  font-size: 9px;
+  font-weight: 300;
+}
+
+.ciudad-name {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.secretaria-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.1;
+  font-size: 9px;
+}
+
+.escudo-municipal {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 50%;
+  position: relative;
+}
+
+.escudo-municipal::before {
+  content: "🏛️";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  filter: brightness(0) invert(1);
+}
+
+/* Modo impresión - tamaño real CR80 */
+@media print {
+  .credencial-container {
+    background: transparent;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .credencial-card {
+    width: 85.6mm;
+    height: 54mm;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .credencial-header {
+    top: 2.4mm;
+    left: 2.4mm;
+    right: 2.4mm;
+    height: 9mm;
+    padding: 0 4mm;
+  }
+
+  .dim-text {
+    font-size: 5.6mm;
+  }
+
+  .dim-subtitle {
+    font-size: 2.2mm;
+  }
+
+  .credencial-photos {
+    top: 12mm;
+    height: 17mm;
+    padding: 0 5mm;
+  }
+
+  .photo-left {
+    width: 13mm;
+    height: 13mm;
+  }
+
+  .photo-right {
+    width: 14mm;
+    height: 14mm;
+  }
+
+  .credencial-info {
+    top: 29.6mm;
+    left: 2.4mm;
+    right: 2.4mm;
+    height: 16mm;
+    padding: 2.4mm 4mm;
+  }
+
+  .info-badge {
+    width: 7mm;
+    height: 4mm;
+  }
+
+  .info-fields {
+    font-size: 2.2mm;
+  }
+
+  .disclaimer {
+    font-size: 1.8mm;
+  }
+
+  .hash-info {
+    font-size: 1.5mm;
+  }
+
+  .credencial-footer {
+    bottom: 2.4mm;
+    left: 2.4mm;
+    right: 2.4mm;
+    height: 7mm;
+  }
+
+  .footer-logo {
+    font-size: 2mm;
+  }
+
+  .leaf-icon {
+    font-size: 4mm;
+  }
+
+  .escudo-municipal {
+    width: 5mm;
+    height: 5mm;
+  }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 500px) {
+  .credencial-card {
+    width: 90vw;
+    height: calc(90vw * 0.63); /* Mantener proporción CR80 */
+    max-width: 350px;
+    max-height: 220px;
+  }
+
+  .credencial-header {
+    height: 38px;
+    padding: 0 16px;
+  }
+
+  .dim-text {
+    font-size: 24px;
+  }
+
+  .dim-subtitle {
+    font-size: 10px;
+  }
+
+  .credencial-photos {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .photo-left {
+    width: 55px;
+    height: 55px;
+  }
+
+  .photo-right {
+    width: 60px;
+    height: 60px;
+  }
+
+  .credencial-info {
+    height: 68px;
+    padding: 10px 16px;
+  }
+
+  .info-badge {
+    width: 30px;
+    height: 18px;
+  }
+
+  .info-fields {
+    font-size: 10px;
+  }
+
+  .disclaimer {
+    font-size: 8px;
+  }
+
+  .hash-info {
+    font-size: 7px;
+  }
+
+  .credencial-footer {
+    height: 30px;
+  }
+
+  .footer-logo {
+    font-size: 9px;
+    gap: 12px;
+  }
+
+  .leaf-icon {
+    font-size: 18px;
+  }
+
+  .escudo-municipal {
+    width: 22px;
+    height: 22px;
+  }
+}

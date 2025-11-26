@@ -1,0 +1,344 @@
+/* CardNueva - Credencial con estilos Tailwind simulados */
+
+/* Resetear estilos base */
+* {
+  box-sizing: border-box;
+}
+
+/* Clases principales del componente */
+.bg-\[#606264\] {
+  background-color: #606264;
+}
+
+.aspect-\[0\.88\] {
+  aspect-ratio: 0.88;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.min-w-\[1024px\] {
+  min-width: 1024px;
+}
+
+.h-\[1165px\] {
+  height: 1165px;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-\[133px\] {
+  top: 133px;
+}
+
+.left-44 {
+  left: 176px; /* 44 * 0.25rem * 16 = 176px */
+}
+
+.w-\[672px\] {
+  width: 672px;
+}
+
+.h-\[900px\] {
+  height: 900px;
+}
+
+.bg-\[#3262ac\] {
+  background-color: #3262ac;
+}
+
+.aspect-\[0\.75\] {
+  aspect-ratio: 0.75;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.left-\[0px\] {
+  left: 0px;
+}
+
+.w-\[660px\] {
+  width: 660px;
+}
+
+.h-\[150px\] {
+  height: 150px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.rounded-\[75px_0px_75px_0px\] {
+  border-radius: 75px 0px 75px 0px;
+}
+
+.top-\[13px\] {
+  top: 13px;
+}
+
+.w-\[600px\] {
+  width: 600px;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.aspect-\[4\.44\] {
+  aspect-ratio: 4.44;
+}
+
+.left-\[50px\] {
+  left: 50px;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.top-\[150px\] {
+  top: 150px;
+}
+
+.w-\[663px\] {
+  width: 663px;
+}
+
+.h-\[271px\] {
+  height: 271px;
+}
+
+.bg-\[#4da9df\] {
+  background-color: #4da9df;
+}
+
+.rounded-\[0px_91px_0px_72px\] {
+  border-radius: 0px 91px 0px 72px;
+}
+
+.top-\[30px\] {
+  top: 30px;
+}
+
+.left-\[60px\] {
+  left: 60px;
+}
+
+.w-\[206px\] {
+  width: 206px;
+}
+
+.h-\[198px\] {
+  height: 198px;
+}
+
+.bg-\[#d9d9d9\] {
+  background-color: #d9d9d9;
+}
+
+.left-\[390px\] {
+  left: 390px;
+}
+
+.w-\[210px\] {
+  width: 210px;
+}
+
+.top-\[421px\] {
+  top: 421px;
+}
+
+.h-\[321px\] {
+  height: 321px;
+}
+
+.rounded-\[90px_0px_90px_0px\] {
+  border-radius: 90px 0px 90px 0px;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.top-\[220px\] {
+  top: 220px;
+}
+
+.left-\[480px\] {
+  left: 480px;
+}
+
+.w-\[131px\] {
+  width: 131px;
+}
+
+.h-\[43px\] {
+  height: 43px;
+}
+
+.top-\[-10px\] {
+  top: -10px;
+}
+
+.left-\[92px\] {
+  left: 92px;
+}
+
+.w-\[567px\] {
+  width: 567px;
+}
+
+.w-44 {
+  width: 176px; /* 11rem = 176px */
+}
+
+.\[font-family\:\'Poppins-Bold\'\,Helvetica\] {
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-\[28px\] {
+  font-size: 28px;
+}
+
+.tracking-\[0\] {
+  letter-spacing: 0;
+}
+
+.leading-\[normal\] {
+  line-height: normal;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.mb-\[9px\] {
+  margin-bottom: 9px;
+}
+
+.mb-\[3px\] {
+  margin-bottom: 3px;
+}
+
+.mb-\[8px\] {
+  margin-bottom: 8px;
+}
+
+.top-\[-60px\] {
+  top: -60px;
+}
+
+.top-\[-25px\] {
+  top: -25px;
+}
+
+.w-\[307px\] {
+  width: 307px;
+}
+
+.top-\[-20px\] {
+  top: -20px;
+}
+
+.w-\[603\.2px\] {
+  width: 603.2px;
+}
+
+.\[font-family\:\'Poppins-Regular\'\,Helvetica\] {
+  font-family: 'Poppins', 'Helvetica', sans-serif;
+}
+
+.text-\[20px\] {
+  font-size: 20px;
+}
+
+.font-normal {
+  font-weight: normal;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-lg {
+  font-size: 18px;
+}
+
+.top-\[775px\] {
+  top: 775px;
+}
+
+.w-\[430px\] {
+  width: 430px;
+}
+
+.h-\[93px\] {
+  height: 93px;
+}
+
+.aspect-\[4\.62\] {
+  aspect-ratio: 4.62;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.top-\[0px\] {
+  top: 0px;
+}
+
+.left-\[520px\] {
+  left: 520px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .min-w-\[1024px\] {
+    min-width: 100%;
+  }
+  
+  .w-full {
+    width: 100vw;
+  }
+  
+  .h-\[1165px\] {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+/* Hash display styles */
+.hash-display {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+}

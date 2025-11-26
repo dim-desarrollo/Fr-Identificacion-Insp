@@ -131,9 +131,9 @@ agent any
                         sh "docker rm -f $contenedorExistente"
                     }
 
-                    sh "export NODE_ENV=production"    
+                    sh "export NODE_ENV=development"    
 
-                    sh "docker build -t ${IDENTIFICADOR_IMAGEN}:${TAG_IMAGEN} ."
+                    sh "docker build -t ${IDENTIFICADOR_IMAGEN}:latest ."
 
                     //sh "docker run -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} -e NODE_ENV=$NODE_ENV --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}:${TAG_IMAGEN}"
 

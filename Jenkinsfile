@@ -45,7 +45,7 @@ agent any
 
         HORA_DESPLIEGUE = sh(returnStdout: true, script: "date '+%A %W %Y %X'").trim()
 
-        GITHUB_MONOLITO_URL = "https://github.com/dim-desarrollo/Identificacion-Inspectores.git"
+        // GITHUB_MONOLITO_URL = "https://github.com/dim-desarrollo/Identificacion-Inspectores.git"
 
         GITHUB_CREDENCIALES = "github-test-1"
         GITHUB_CREDENCIALES_DEPLOY = "dim-desarrollo"
