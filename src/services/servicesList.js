@@ -14,3 +14,14 @@ export function getListInpectores(){
             return res
         })
 }
+
+export function getListNuevaBD(){
+    console.log("Ingresa")
+    return fetch(`${import.meta.env.VITE_NUEVABD}/api/empleado/list?pagina=1&sizePagina=100`)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            
+            return res
+        })
+}

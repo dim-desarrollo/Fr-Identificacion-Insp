@@ -39,6 +39,7 @@ export function postInsertImg(Num, img) {
   formdata.append("Legajo", Num);
   formdata.append("Imagen", img);
 
+  console.log(formdata)
   var requestOptions = {
     method: 'POST',
     body: formdata,
@@ -50,7 +51,7 @@ export function postInsertImg(Num, img) {
   console.log("----- Imagen -----")
   console.log(img)
 
-  fetch(`${import.meta.env.VITE_URL_API}/api/subi-imagen`, requestOptions)
+  fetch(`${import.meta.env.VITE_NUEVABD}/api/empleado/subir-imagen`, requestOptions)
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
