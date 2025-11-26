@@ -120,7 +120,7 @@ agent any
                     if (!fileExists("Dockerfile")) {
                         error "Dockerfile not found"
                     }
-
+                        sh "docker ps"
                     // Revisar si existe un contenedor con el mismo nombre
                     def contenedorExistente = sh(script: "docker ps -aqf name=${NOMBRE_CONTENEDOR}", returnStdout: true).trim()
 
