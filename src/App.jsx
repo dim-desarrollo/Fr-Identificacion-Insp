@@ -38,6 +38,8 @@ function App() {
       {/* <Route path='/lista' element={ <ListInspectors /> } />   */}
       <Route path='/insert/:numeroAfiliado' element={ <InsertImg /> } />
       <Route path='/lista' element={ <ListBd/> }/>
+      <Route path='/prueba' element={ <h6>Prueba</h6> }/>
+      
       {/* <Route path='/' element={ <Card } /> */}
     </Routes>
   )
