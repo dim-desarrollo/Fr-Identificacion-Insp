@@ -1,165 +1,68 @@
-/*
-    CREDENCIALES NECESARIAS
-    - Github        (Usuario y clave)
-    
-    HERRAMIENTAS NECESARIAS
-    - Java 20
-    - Docker 24.0.4 (Cualquier versión que soporte --password-stdin)
-    - Maven 3.9.3
-    - NodeJS 18.18.1
-
-    PLUGINS NECESARIOS
-    - Discord
-    - Docker
-    
-    CONSIDERACIONES
-    * 
- */
- 
-def ARTIFACT_ID
-def IDENTIFICADOR_PROYECTO
-def IDENTIFICADOR_UNICO_BUILD
-def RAMA_PARA_CLONAR
-
 pipeline {
+    agent any
 
-agent any 
-
-   tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        // dockerTool 'docker24.0.4'
+    tools {
         nodejs 'nodeJs18.18.1'
     }
 
     environment {
-
-        HORA_DESPLIEGUE = sh(returnStdout: true, script: "date '+%A %W %Y %X'").trim()
-
-        
+        APP_ENV = 'development'
         PUERTO_EXTERNO = 3020
-
-        IDENTIFICADOR_UNICO_BUILD = 'front-inspectores' //agregado a mano, ver si se hace de otra manera
         IDENTIFICADOR_IMAGEN = 'front-inspectores'
-        TAG_IMAGEN = "v${env.BUILD_NUMBER}-${env.BUILD_ID}"  // Tag único usando el número de compilación y el ID de la construcción
-
         CARPETA_APLICACION = './'
-
     }
 
-   stages {
+    stages {
 
-
-    // stage('Message start deploy dev') {
-
-    //     steps {
-
-    //         discordSend description: "Inicio de deploy en PRODUCCION!!!", footer: "Inicado", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
-
-    //     }
-
-    // }
-
-
-    stage('Iniciando variables') {
-
-        steps {
-
-            dir("${CARPETA_APLICACION}"){
-
+        stage('Tools initialization') {
+            steps {
                 script {
+                    DOCKER_VERSION = sh(returnStdout: true, script: 'docker version').trim()
+                    NODE_VERSION   = sh(returnStdout: true, script: 'npm -v').trim()
 
-                    IDENTIFICADOR_UNICO_BUILD = "${IDENTIFICADOR_PROYECTO}.${BUILD_NUMBER}"
-
+                    echo "Docker version: ${DOCKER_VERSION}"
+                    echo "Node version: ${NODE_VERSION}"
+                    echo "APP_ENV (DEV): ${APP_ENV}"
                 }
-
             }
-
-
         }
 
+        stage('Build and run to Docker') {
+            environment {
+                PUERTO_INTERNO    = 80
+                NOMBRE_CONTENEDOR = "front-inspectores-dev"
+            }
+
+            steps {
+                script {
+                    dir("${CARPETA_APLICACION}") {
+
+                        if (!fileExists("Dockerfile")) {
+                            error "Dockerfile not found"
+                        }
+
+                        def contenedorExistente = sh(
+                            script: "docker ps -aqf name=${NOMBRE_CONTENEDOR}",
+                            returnStdout: true
+                        ).trim()
+
+                        if (contenedorExistente) {
+                            sh "docker stop $contenedorExistente"
+                            sh "docker rm -f $contenedorExistente"
+                        }
+
+                        // DEV: usa .env.development
+                        sh """
+                          docker build \
+                            --build-arg APP_ENV=${APP_ENV} \
+                            -t ${IDENTIFICADOR_IMAGEN}:latest .
+                        """
+
+                        // Opcional: levantar el contenedor de DEV
+                        // sh "docker run -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}:latest"
+                    }
+                }
+            }
+        }
     }
-
-      stage('Tools initialization') {
-          steps {
-              script {
-
-                    if (env.BRANCH_NAME){
-
-                        RAMA_PARA_CLONAR = env.BRANCH_NAME
-
-                    }
-                    else{
-
-                        RAMA_PARA_CLONAR = 'Dev'
-
-                    }
-
-
-                  DOCKER_VERSION = sh(returnStdout: true, script: 'docker version').trim()
-                  NODE_VERSION = sh(returnStdout: true, script: 'npm -v').trim()
-
-                  echo "Docker version: ${DOCKER_VERSION}"
-                  echo "Node version: ${NODE_VERSION}"
-
-              }
-          }
-      }
-
-     stage('Build and run to Docker') {
-
-         environment{
-             PUERTO_INTERNO = 80
-             NOMBRE_CONTENEDOR = "front-inspectores"
-         }
-
-        steps {
-            script {
-
-                dir ("${CARPETA_APLICACION}"){
-                    // Verifica si existe un archivo Dockerfile en la subcarpeta actual
-                    if (!fileExists("Dockerfile")) {
-                        error "Dockerfile not found"
-                    }
-                        sh "docker ps"
-                    // Revisar si existe un contenedor con el mismo nombre
-                    def contenedorExistente = sh(script: "docker ps -aqf name=${NOMBRE_CONTENEDOR}", returnStdout: true).trim()
-
-                    // Verifica si existe un contenedor con el mismo nombre
-                    if (contenedorExistente) {
-                        // Si existe el contenedor, pausarlo y luego eliminarlo
-                        sh "docker stop $contenedorExistente"
-                        sh "docker rm -f $contenedorExistente"
-                    }
-
-                    sh "export NODE_ENV=development"    
-
-                    sh "docker build -t ${IDENTIFICADOR_IMAGEN}:latest ."
-
-                    //sh "docker run -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} -e NODE_ENV=$NODE_ENV --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}:${TAG_IMAGEN}"
-
-                    //sh "docker run -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} -v ${CARPETA_APLICACION}nginx.conf:/etc/nginx/conf.d/default.conf --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}"
-
-
-                }
-
-            }
-        }
-
-     }
-
-    // stage('Message finish deploy') {
-
-
-    //     steps {
-
-    //         sh "echo ${HORA_DESPLIEGUE}"
-
-    //         discordSend description: "(DEV) Deploy front-inspectores echo en PRODUCCION!!!", footer: "Hora de inicio de despliegue: ${HORA_DESPLIEGUE} ", link: env.BUILD_URL, result: currentBuild.currentResult, title: "(DEV) Deploy front-inspectores en PRODUCCION", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
-
-    //     }
-
-    // }
-
-   }
-
- }
+}

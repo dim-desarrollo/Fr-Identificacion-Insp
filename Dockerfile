@@ -2,12 +2,17 @@ FROM node:18-alpine3.17 as build
 
 WORKDIR /app
 
-#parte de la prueba
-#COPY .env.$NODE_ENV .env
+# Entorno que viene desde Jenkins
+ARG APP_ENV=development
 
-COPY . /app
-
+COPY package*.json ./
 RUN npm install
+
+COPY . .
+
+# Copia el .env correcto según APP_ENV
+RUN cp .env.${APP_ENV} .env
+
 RUN npm run build
 
 FROM nginx:alpine
