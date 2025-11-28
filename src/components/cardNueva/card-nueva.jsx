@@ -13,7 +13,7 @@ export const CardNueva = () => {
   useEffect(() => {
     if (hashLagajo) {
       console.log("Hash Legajo recibido:", hashLagajo);
-      fetch(`http://localhost:5212/api/empleado?hashLegajo=${hashLagajo}`)
+      fetch(`${import.meta.env.VITE_URL_EXTERNO}/api/empleado?hashLegajo=${hashLagajo}`)
         .then((response) => response.json())
         .then((data) => {
           setEmpleadoData(data);

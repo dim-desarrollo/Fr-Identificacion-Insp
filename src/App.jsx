@@ -12,12 +12,12 @@ import { CardNueva } from "./components/cardNueva/card-nueva"
 
 
   {/*
-  
-      acceder desde el 3010 es direccion al contenedor    
-      ngix -> acceder desde el 3010 es dereccion al desde ngix 
 
-  
-      rutas explicacion 
+      acceder desde el 3010 es direccion al contenedor
+      ngix -> acceder desde el 3010 es dereccion al desde ngix
+
+
+      rutas explicacion
 
       /lista -> es para uso interno, debe tener una ip local:3020. no un dominio, ya que no puede ser accedida por no tener disponible el servicio de dns internamente.
 
@@ -27,19 +27,19 @@ import { CardNueva } from "./components/cardNueva/card-nueva"
     */}
 
 function App() {
-  
+
 
   return (
     <Routes>
       <Route path='/generar' element={ <GenerateQR /> } />
-      <Route path='/inspectores/:numeroAfiliado' element={ <CardInspectores /> } />
-      <Route path='/inspectoresPrueba/:hashLagajo' element={ <CardNueva/>  } />
+      <Route path='/inspectores/:hashLagajo' element={ <CardNueva /> } />
+      {/* <Route path='/inspectoresPrueba/:hashLagajo' element={ <CardNueva/>  } /> */}
       <Route path='/scaner' element={ <ViewAgentes /> } />
       {/* <Route path='/lista' element={ <ListInspectors /> } />   */}
       <Route path='/insert/:numeroAfiliado' element={ <InsertImg /> } />
       <Route path='/lista' element={ <ListBd/> }/>
       <Route path='/prueba' element={ <h6>Prueba</h6> }/>
-      
+
       {/* <Route path='/' element={ <Card } /> */}
     </Routes>
   )

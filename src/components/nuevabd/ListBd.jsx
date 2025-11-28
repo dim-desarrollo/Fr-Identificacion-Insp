@@ -11,7 +11,7 @@ function ListBd() {
         if (!IDNI) return '';
         try {
             // const qrDataUrl = `${import.meta.env.VITE_NUEVABD}:3010/inspectores/${IDNI}`;
-            const qrDataUrl = `http://dimsmt.gob.ar:3010/inspectores/${IDNI}`;
+            const qrDataUrl = `${import.meta.env.VITE_URL_EXTERNO}/inspectores/${IDNI}`;
             return await QRCode.toDataURL(qrDataUrl, {
                 width: 350,
                 color: {
