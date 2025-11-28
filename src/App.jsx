@@ -39,11 +39,10 @@ function App() {
       <Route path='/insert/:numeroAfiliado' element={ <InsertImg /> } />
       <Route path='/lista' element={ <ListBd/> }/>
       <Route path='/prueba' element={ <h6>Prueba</h6> }/>
-      <Route parh='/fran' element={ <p>Franquito</p> } />
+      <Route path='/fran' element={ <p>Franquito</p> } />
       {/* <Route path='/' element={ <Card } /> */}
     </Routes>
   )
 }
 
 export default App
-  
