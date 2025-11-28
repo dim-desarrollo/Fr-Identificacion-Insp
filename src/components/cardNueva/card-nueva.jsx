@@ -65,7 +65,7 @@ export const CardNueva = () => {
               alt="Foto de perfil del afiliado"
               src={
                 empleadoData && empleadoData.urlImagen
-                  ? `http://localhost:5212${empleadoData.urlImagen}`
+                  ? `${import.meta.env.VITE_URL_EXTERNO}${empleadoData.urlImagen}`
                   : "https://via.placeholder.com/206x198.png?text=Foto+No+Disponible"
               }
             />
