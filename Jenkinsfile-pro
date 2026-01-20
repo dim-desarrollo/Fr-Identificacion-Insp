@@ -40,7 +40,7 @@ agent any
 
         IDENTIFICADOR_UNICO_BUILD = 'front-inspectores' //agregado a mano, ver si se hace de otra manera
         IDENTIFICADOR_IMAGEN = 'front-inspectores'
-        TAG_IMAGEN = "v${env.BUILD_NUMBER}-${env.BUILD_ID}"  // Tag único usando el número de compilación y el ID de la construcción
+        TAG_IMAGEN = "latest"  // Tag único usando el número de compilación y el ID de la construcción
 
         CARPETA_APLICACION = './'
 
