@@ -17,7 +17,7 @@ export function getListInpectores(){
 
 export function getListNuevaBD(){
     console.log("Ingresa")
-    return fetch(`${import.meta.env.VITE_URL_INTERNO}/api/empleado/list?pagina=1&sizePagina=200`)
+    return fetch(`${import.meta.env.VITE_URL_INTERNO}/api/empleado/list?pagina=1&sizePagina=500`)
         .then(res => res.json())
         .then(res => {
             console.log(res)
